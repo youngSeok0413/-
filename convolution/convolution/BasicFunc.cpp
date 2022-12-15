@@ -20,6 +20,26 @@ void ArrDestroyer::destroy() {
 	std::cout << "모든 동적 배열이 삭제 되었습니다.";
 }
 
+void PointArrDestroyer::add(point* toAdd) {
+	toDestroy.push_back(toAdd);
+	cnt++;
+}
+
+int PointArrDestroyer::size() {
+	return cnt;
+}
+
+void PointArrDestroyer::destroy() {
+	for (auto each : toDestroy) {
+		if (each != NULL) {
+			delete[] each;
+			each = NULL;
+			cnt--;
+		}
+	}
+	std::cout << "모든 동적 배열이 삭제 되었습니다.";
+}
+
 //CREATE
 //사용자가 입력한 크기의 배열을 변환
 double* UserArr(int size, ArrDestroyer& destroyer) {
@@ -130,7 +150,7 @@ double* GetExpSignal(double start, double end, double gap, ArrDestroyer& destroy
 
 //계단 신호 반환
 double step(double x) {
-	if (x > 0) return 1;
+	if (x >= 0) return 1;
 	else return 0;
 }
 double* GetStepSignal(double start, double end, double gap, ArrDestroyer& destroyer) {
@@ -141,7 +161,7 @@ double* GetStepSignal(double start, double end, double gap, ArrDestroyer& destro
 
 //램프 신호 반환
 double ramp(double x) {
-	if (x > 0) return x;
+	if (x >= 0) return x;
 	else return 0;
 }
 double* GetRampSignal(double start, double end, double gap, ArrDestroyer& destroyer) {
@@ -149,3 +169,28 @@ double* GetRampSignal(double start, double end, double gap, ArrDestroyer& destro
 
 	return newArr;
 }
+
+//벡터 집합 생성 : (x, y)
+point* GetPointArr(double* x, double* y, PointArrDestroyer& destroyer) {
+	int szX = ArraySize(x);
+	int szY = ArraySize(y);
+
+	if (szX == szY) {
+		point* newArr = new point[szX];
+		for (int i = 0; i < szX; i++) newArr[i] = { x[i], y[i] };
+
+		destroyer.add(newArr);
+
+		return newArr;
+	}
+	else return NULL;
+}
+
+//특정 범위에서의 점들의 집합을 생성해줌
+point* GetAreaPointArr(double start, double end, double gap, double* y, 
+	ArrDestroyer& arrDestroyer, PointArrDestroyer& pointDestroyer) {
+	double* xAxis = BasicArr(start, end, gap, arrDestroyer);
+	return GetPointArr(xAxis, y, pointDestroyer);
+}
+
+//아 클래스로 구성할 걸ㅠㅠ

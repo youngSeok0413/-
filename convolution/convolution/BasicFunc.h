@@ -4,11 +4,18 @@
 #include <math.h>
 #include <sstream>
 
+struct point
+{
+	double x;
+	double y;
+};
+
 //MANGING
-//모든 동적 배열을 관리하는 클래스(하나만 사용할 것)
+//double 동적 배열을 관리하는 클래스(하나만 사용할 것)
 class ArrDestroyer {
 private:
 	std::list<double*> toDestroy;
+
 	int cnt = 0;
 public:
 
@@ -18,6 +25,23 @@ public:
 
 	void destroy();
 };
+
+//point 동적 배을을 관리하는 클래스(하나만 사용할 것)
+class PointArrDestroyer {
+private:
+	std::list<point*> toDestroy;
+
+	int cnt = 0;
+public:
+
+	void add(point* toAdd);
+
+	int size();
+
+	void destroy();
+};
+
+
 
 //CREATE
 //사용자가 입력한 크기의 배열을 변환
@@ -63,3 +87,11 @@ double* GetStepSignal(double start, double end, double gap, ArrDestroyer& destro
 //램프 신호 반환
 double ramp(double x);
 double* GetRampSignal(double start, double end, double gap, ArrDestroyer& destroyer);
+
+//벡터 집합 생성 : (x, y)
+point* GetPointArr(double* x, double* y, PointArrDestroyer& destroyer);
+
+//특정 범위에서의 점들의 집합을 생성해줌
+point* GetAreaPointArr(double start, double end, double gap, double* y,
+	ArrDestroyer& arrDestroyer, PointArrDestroyer& pointDestroyer);
+

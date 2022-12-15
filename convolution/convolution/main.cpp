@@ -1,4 +1,5 @@
 #include "BasicFunc.h"
+#include "UserDefFunction.h"
 
 int main() {
 	ArrDestroyer des;
@@ -46,6 +47,16 @@ int main() {
 	double* arr9 = GetRampSignal(-5, 5, 1, des);
 	std::cout << ArraySize(arr9) << " : ";
 	ReadArray(arr9);
+	std::cout << std::endl;
+
+	double* arr10 = copy(arr9, des);
+	std::cout << ArraySize(arr10) << " : ";
+	ReadArray(arr10);
+	std::cout << std::endl;
+
+	double* arr11 = GetOutputArr(arr2, testFunction, des);
+	std::cout << ArraySize(arr11) << " : ";
+	ReadArray(arr11);
 	std::cout << std::endl;
 
 	std::cout << des.size() << std::endl;
