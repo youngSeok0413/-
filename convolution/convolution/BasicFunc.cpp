@@ -193,4 +193,39 @@ point* GetAreaPointArr(double start, double end, double gap, double* y,
 	return GetPointArr(xAxis, y, pointDestroyer);
 }
 
-//아 클래스로 구성할 걸ㅠㅠ
+//x축 대칭
+double* XAxisFlip(double* arr, ArrDestroyer& destroyer) {
+	int sz = ArraySize(arr);
+	double* newArr = new double[sz];
+
+	for (int i = 0; i < sz/2; i++) {
+		newArr[i] = arr[sz-1-i];
+		newArr[sz - 1 - i] = arr[i];
+	}
+
+	destroyer.add(newArr);
+
+	return newArr;
+}
+
+//y축 대칭
+double* YAxisFlip(double* arr, ArrDestroyer& destroyer) {
+	int sz = ArraySize(arr);
+	double* newArr = new double[sz];
+
+	for (int i = 0; i < sz; i++) {
+		newArr[i] = arr[i]*(-1);
+	}
+
+	destroyer.add(newArr);
+
+	return newArr;
+}
+
+//conv
+//입력과 시스템 모두 0부터 시작한다.
+double* conv(double* sig, double* h, ArrDestroyer& destroyer) {
+	int sizeOfsig = ArraySize(sig);
+	int sizeOfsig = ArraySize(sig);
+	double* newArr = new double[];
+}

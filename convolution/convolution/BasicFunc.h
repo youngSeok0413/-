@@ -95,3 +95,11 @@ point* GetPointArr(double* x, double* y, PointArrDestroyer& destroyer);
 point* GetAreaPointArr(double start, double end, double gap, double* y,
 	ArrDestroyer& arrDestroyer, PointArrDestroyer& pointDestroyer);
 
+//xÃà ´ëÄª
+double* XAxisFlip(double* arr, ArrDestroyer& destroyer);
+
+//yÃà ´ëÄª
+double* YAxisFlip(double* arr, ArrDestroyer& destroyer);
+
+//conv ÇÔ¼ö
+double* conv(double* sig, double* h, ArrDestroyer& destroyer);

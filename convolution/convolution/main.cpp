@@ -59,6 +59,16 @@ int main() {
 	ReadArray(arr11);
 	std::cout << std::endl;
 
+	double* arr12 = XAxisFlip(arr9, des);
+	std::cout << ArraySize(arr12) << " : ";
+	ReadArray(arr12);
+	std::cout << std::endl;
+
+	double* arr13 = YAxisFlip(arr9, des);
+	std::cout << ArraySize(arr13) << " : ";
+	ReadArray(arr13);
+	std::cout << std::endl;
+
 	std::cout << des.size() << std::endl;
 	des.destroy();
 

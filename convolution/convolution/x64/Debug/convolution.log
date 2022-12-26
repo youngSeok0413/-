@@ -1,4 +1,4 @@
-﻿  main.cpp
-  UserDefFunction.cpp
-  Generating Code...
+﻿  BasicFunc.cpp
+D:\Work\DSP\convolution\convolution\BasicFunc.cpp(66,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+D:\Work\DSP\convolution\convolution\BasicFunc.cpp(80,37): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   convolution.vcxproj -> D:\Work\DSP\convolution\x64\Debug\convolution.exe
