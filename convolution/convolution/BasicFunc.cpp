@@ -224,8 +224,18 @@ double* YAxisFlip(double* arr, ArrDestroyer& destroyer) {
 
 //conv
 //입력과 시스템 모두 0부터 시작한다.
-double* conv(double* sig, double* h, ArrDestroyer& destroyer) {
-	int sizeOfsig = ArraySize(sig);
-	int sizeOfsig = ArraySize(sig);
-	double* newArr = new double[];
+double* conv(double* x, double* h, ArrDestroyer& destroyer) {
+	int x_size = ArraySize(x);
+	int h_size = ArraySize(h);
+
+	int new_array_size = x_size + h_size - 1;
+	double* new_array = Zeros(new_array_size, destroyer);
+
+	for (int n = 0; n < new_array_size; n++) {
+		for (int k = 0; k < x_size; k++) {
+			if (n - k > -1 && n - k < h_size) new_array[n] += x[k] * h[n - k];
+		}
+	}
+
+	return new_array;
 }

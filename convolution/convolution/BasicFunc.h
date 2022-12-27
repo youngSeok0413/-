@@ -102,4 +102,5 @@ double* XAxisFlip(double* arr, ArrDestroyer& destroyer);
 double* YAxisFlip(double* arr, ArrDestroyer& destroyer);
 
 //conv ÇÔ¼ö
-double* conv(double* sig, double* h, ArrDestroyer& destroyer);
+double* conv(double* x, double* h, ArrDestroyer& destroyer);
+

@@ -69,6 +69,28 @@ int main() {
 	ReadArray(arr13);
 	std::cout << std::endl;
 
+	double* x = new double[3];
+	double* h = new double[7];
+
+	des.add(x);
+	des.add(h);
+
+	x[0] = 1;
+	x[1] = 1;
+	x[2] = 1;
+
+	h[0] = 1;
+	h[1] = 1;
+	h[2] = 0;
+	h[3] = 0;
+	h[4] = 0;
+	h[5] = 1;
+	h[6] = 1;
+
+	double* arr15 = conv(x, h, des);
+	ReadArray(arr15);
+	std::cout << std::endl;
+
 	std::cout << des.size() << std::endl;
 	des.destroy();
 
